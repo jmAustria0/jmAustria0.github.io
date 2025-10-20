@@ -122,38 +122,129 @@
             scroll-margin-top: 100px;
         }
 
-        .home {
+        #home {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap;
             padding: 100px 10%;
             background-color: #000;
             color: #fff;
+            min-height: 100vh;
         }
 
-        .home-text h1 {
-            font-size: 2.5rem;
+        /* ===== TEXT STYLING ===== */
+        #home .home-text {
+            flex: 1 1 400px;
+            max-width: 500px;
+        }
+
+        #home .home-text h1 {
+            font-size: 2.2rem;
             font-weight: 600;
             color: #ccc;
         }
 
-        .home-text h2 {
+        #home .home-text h2 {
             font-size: 3rem;
             font-weight: 700;
             color: #b38df7;
+            margin-top: 5px;
         }
 
-        .home-text h3 {
-            font-size: 1.5rem;
+        #home .home-text h3 {
+            font-size: 1.4rem;
             color: #ddd;
             margin-top: 10px;
         }
 
-        .home-text p {
+        #home .home-text p {
             margin-top: 15px;
             color: #aaa;
-            max-width: 500px;
             line-height: 1.6;
+            max-width: 90%;
+        }
+
+        #home .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 30px;
+            background-color: #6c63ff;
+            color: white;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.3s ease;
+            text-decoration: none;
+        }
+
+        #home .btn:hover {
+            background-color: #4e47d4;
+        }
+
+        /* ===== IMAGE STYLING ===== */
+        #home .home-img {
+            flex: 1 1 350px;
+            display: flex;
+            justify-content: center;
+        }
+
+        #home .home-img img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 15px;
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* ===== RESPONSIVENESS ===== */
+
+        /* Tablet */
+        @media (max-width: 1024px) {
+            #home {
+                padding: 80px 8%;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            #home .home-text {
+                max-width: 100%;
+            }
+
+            #home .home-img {
+                margin-top: 40px;
+            }
+
+            #home .home-img img {
+                max-width: 320px;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            #home {
+                padding: 70px 6%;
+            }
+
+            #home .home-text h1 {
+                font-size: 1.8rem;
+            }
+
+            #home .home-text h2 {
+                font-size: 2.3rem;
+            }
+
+            #home .home-text h3 {
+                font-size: 1.2rem;
+            }
+
+            #home .home-text p {
+                font-size: 0.95rem;
+            }
+
+            #home .home-img img {
+                max-width: 280px;
+            }
         }
 
         .btn {
@@ -467,7 +558,7 @@
         <ul class="nav-links" id="nav-links">
             <li><a href="#home" class="active">Home</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#work">Work</a></li>
+            <li><a href="#project">Work</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
 
