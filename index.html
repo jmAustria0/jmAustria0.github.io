@@ -27,108 +27,156 @@
             background-color: #f8f9fa;
         }
 
-        .navbar {
-            background-color: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background-color: #9a9898;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
-        .navbar-brand {
-            font-weight: 700;
-            font-family: 'Merriweather', serif;
+        .navbar {
             display: flex;
             align-items: center;
+            justify-content: space-between;
+            padding: 18px 10%;
         }
 
-        .navbar-nav {
-            flex: 1;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #222;
+            letter-spacing: 0.5px;
+        }
+
+        .logo span {
+            color: #6c63ff;
+        }
+
+        /* ===== NAV LINKS ===== */
+        .nav-links {
+            list-style: none;
             display: flex;
-            justify-content: center;
+            gap: 2rem;
+            transition: all 0.3s ease;
         }
 
-        .navbar-nav .nav-item {
-            margin: 0 10px;
-        }
-
-        .nav-link {
-            padding: 0.5rem 1rem;
+        .nav-links li a {
+            text-decoration: none;
+            color: #444;
+            font-weight: 500;
+            font-size: 1rem;
             transition: color 0.3s ease;
         }
 
-        .nav-link:hover {
-            color: rgb(147, 102, 205);
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: #6c63ff;
         }
 
-        .navbar-toggler {
-            border: none;
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
         }
 
-        .navbar-collapse {
-            justify-content: space-between;
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                right: 10%;
+                background-color: #ffffff;
+                flex-direction: column;
+                width: 200px;
+                padding: 1.5rem;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                border-radius: 10px;
+                opacity: 0;
+                pointer-events: none;
+                transform: translateY(-10px);
+            }
+
+            .nav-links.active {
+                opacity: 1;
+                pointer-events: auto;
+                transform: translateY(0);
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
         }
 
         section {
-            padding: 60px 0;
-            overflow: hidden;
+            scroll-margin-top: 100px;
         }
 
-        #home {
-            background-color: black;
-            height: 100vh;
+        .home {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            color: white;
-            position: relative;
-            padding: 0 5%;
-        }
-
-        #home::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1;
-        }
-
-        .home-text {
-            position: relative;
-            z-index: 2;
-            font-size: 50px;
-            font-family: 'Merriweather', serif;
-            width: 50%;
-        }
-
-        .home-text span {
-            color: rgb(147, 102, 205);
+            padding: 100px 10%;
+            background-color: #000;
+            color: #fff;
         }
 
         .home-text h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #ccc;
+        }
+
+        .home-text h2 {
             font-size: 3rem;
-            margin-top: 1rem;
+            font-weight: 700;
+            color: #b38df7;
         }
 
-        .home-text h4 {
+        .home-text h3 {
             font-size: 1.5rem;
-            font-weight: 300;
-            margin-bottom: 1rem;
+            color: #ddd;
+            margin-top: 10px;
         }
 
-        .home-image {
-            position: relative;
-            z-index: 2;
-            width: 50%;
-            max-width: 800px;
-            margin-top: -250px;
+        .home-text p {
+            margin-top: 15px;
+            color: #aaa;
+            max-width: 500px;
+            line-height: 1.6;
         }
 
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 10px 25px;
+            background-color: #6c63ff;
+            color: white;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
 
-        .home-image img {
-            width: 100%;
+        .btn:hover {
+            background-color: #4e47d4;
+        }
+
+        .home-img img {
+            width: 380px;
             height: auto;
-            border-radius: 10px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+            object-fit: cover;
         }
 
 
@@ -236,10 +284,27 @@
 
         .project-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, auto));
-            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            margin-top: 5rem;
+        }
+
+        .project-box {
+            background: #1a1a1a;
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 350px;
+            width: 100%;
+            padding: 1rem;
+        }
+
+        .project-box img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
         }
 
         .row-img {
@@ -284,6 +349,7 @@
         .row-right {
             margin-right: 10%;
         }
+
         .row-right a {
             display: inline-flex;
             align-items: center;
@@ -394,238 +460,235 @@
     </style>
 </head>
 
-<body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="70" tabindex="0">
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3">
-        <div class="container">
-            <a class="navbar-brand" href="#home">
-                <img src="pic/logo.jpg" alt="Logo" style="height: 40px; margin-right: 10px;">
-                My Portfolio
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#home">Home</a>
+<header>
+    <nav class="navbar">
+        <div class="logo">JM<span>Portfolio</span></div>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+</header>
+
+<section class="home" id="home">
+    <div class="home-text">
+        <h1>Hello, I'm</h1>
+        <h2>John Michael Austria</h2>
+        <h3>BS in Information Technology Graduate</h3>
+        <a href="#contact" class="btn">Contact Me</a>
+    </div>
+    <div class="home-img">
+        <img src="pic/pic.png" alt="John Michael Austria">
+    </div>
+</section>
+
+<section class="about" id="about">
+    <div class="about-img">
+        <img src="pic/pic.png" class="img-fluid" alt="">
+    </div>
+
+    <div class="about-text">
+        <h2><i class="bi bi-person-check" style="color: #b68362;"></i> More <span>About me</span></h2>
+        <p class="fst-italic py-3">
+            I'm an aspiring programmer who's genuinely excited about coding and eager to learn more every day. I
+            love diving into different programming languages and exploring new technologies, and I'm always up for a
+            challenge. The thrill of problem-solving and creating something from scratch really drives me. I enjoy
+            collaborating with others and sharing ideas, and I believe that every project is a chance to grow. With
+            an open heart and an open mind, I'm ready to embrace this journey and become the developer I aspire to
+            be.
+        </p>
+        <div class="row">
+            <div class="col-lg-6">
+                <ul>
+                    <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>April 10, 2002</span>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
+                    <li><i class="bi bi-chevron-right"></i> <strong>Github:</strong>
+                        <span>jmAustria0.github.io</span>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#project">Work</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
+                    <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>09667748998</span></li>
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <ul>
+                    <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>23</span></li>
+                    <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Bachelor of Science in
+                            Information Technology
+                        </span></li>
+                    <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong>
+                        <span>AustriaJm10@gmail.com</span>
                     </li>
                 </ul>
             </div>
-        </div>
-    </nav>
-
-    <section id="home">
-        <div class="home-text">
-            <h1>Hi, I'm <br><span>John Michael Austria</span></h1>
-            <a href="#contact" class="btn btn-primary">Contact Me</a>
-        </div>
-        <div class="home-image">
-            <div class="card">
-                <img src="pic/pic.png" style="border: none;" alt="jm" class="card-img-top">
+            <div class="text">
+                <h2><span>My </span>Skills</h2>
+                <h5><i class="bi bi-code-slash" style="color: #b68362;"></i><strong> Programming Languages</strong>
+                </h5>
+                <br>
+                <h5><i class="bi bi-laptop" style="color: #b68362;"></i> Web Development</h5>
+                <br>
+                <h5><i class="bi bi-clipboard-data" style="color: #b68362;"></i> Data Structures and Algorithms</h5>
+                <br>
+                <h5><i class="bi bi-cloud" style="color: #b68362;"></i> Cloud Services</h5>
+                <br>
+                <h5><i class="bi bi-phone" style="color: #b68362;"></i> Mobile Development</h5>
+                <br>
             </div>
         </div>
-    </section>
-
-    <section class="about" id="about">
-        <div class="about-img">
-            <img src="pic/pic.png" class="img-fluid" alt="">
-        </div>
-
-        <div class="about-text">
-            <h2><i class="bi bi-person-check" style="color: #b68362;"></i> More <span>About me</span></h2>
-            <p class="fst-italic py-3">
-                I'm an aspiring programmer who's genuinely excited about coding and eager to learn more every day. I
-                love diving into different programming languages and exploring new technologies, and I'm always up for a
-                challenge. The thrill of problem-solving and creating something from scratch really drives me. I enjoy
-                collaborating with others and sharing ideas, and I believe that every project is a chance to grow. With
-                an open heart and an open mind, I'm ready to embrace this journey and become the developer I aspire to
-                be.
-            </p>
-            <div class="row">
-                <div class="col-lg-6">
-                    <ul>
-                        <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>April 10, 2002</span>
-                        </li>
-                        <li><i class="bi bi-chevron-right"></i> <strong>Github:</strong>
-                            <span>jmAustria0.github.io</span>
-                        </li>
-                        <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>09667748998</span></li>
-                    </ul>
-                </div>
-                <div class="col-lg-6">
-                    <ul>
-                        <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>22</span></li>
-                        <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Bachelor of Science in Information Technology
-                                </span></li>
-                        <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong>
-                            <span>AustriaJm10@gmail.com</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="text">
-                    <h2><span>My </span>Skills</h2>
-                    <h5><i class="bi bi-code-slash" style="color: #b68362;"></i><strong> Programming Languages</strong>
-                    </h5>
-                    <br>
-                    <h5><i class="bi bi-laptop" style="color: #b68362;"></i> Web Development</h5>
-                    <br>
-                    <h5><i class="bi bi-clipboard-data" style="color: #b68362;"></i> Data Structures and Algorithms</h5>
-                    <br>
-                    <h5><i class="bi bi-cloud" style="color: #b68362;"></i> Cloud Services</h5>
-                    <br>
-                    <h5><i class="bi bi-phone" style="color: #b68362;"></i> Mobile Development</h5>
-                    <br>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
+</section>
 
 
-    <section class="project" id="project">
-        <div class="mid-text">
-            <h2><i class="bi bi-folder" style="color: #b68362;"></i>  My <span>Projects</span></h2>
-        </div>
-        <div class="project-content">
-            <div class="row">
-                <div class="row-img">
-                    <a href="pic/Bajaj.pdf">
+<section class="project" id="project">
+    <div class="mid-text">
+        <h2><i class="bi bi-folder" style="color: #b68362;"></i> My <span>Projects</span></h2>
+    </div>
+    <div class="project-content">
+        <div class="row">
+            <div class="row-img">
+                <a href="pic/Bajaj.pdf">
                     <img src="pic/A01.png" alt="">
                 </a>
-                </div>
+            </div>
 
-                <div class="row-in">
-                    <div class="row-left">
-                        <h3>Bajaj Maxima</h3>
-                    </div>
-                    <div class="row-right">
-                        <a href="pic/Bajaj.pdf"><i class="bi bi-link"></i></a>
-                    </div>
+            <div class="row-in">
+                <div class="row-left">
+                    <h3>Bajaj Maxima</h3>
+                </div>
+                <div class="row-right">
+                    <a href="pic/Bajaj.pdf"><i class="bi bi-link"></i></a>
                 </div>
             </div>
-            <div class="row">
-                <div class="row-img">
-                    <a href="Everest/index.html">
+        </div>
+        <div class="row">
+            <div class="row-img">
+                <a href="Everest/index.html">
                     <img src="pic/home.png" alt="">
                 </a>
-                </div>
+            </div>
 
-                <div class="row-in">
-                    <div class="row-left">
-                        <h3>Above the Clouds</h3>
-                    </div>
-                    <div class="row-right">
-                        <a href="Everest/index.html"><i class="bi bi-link"></i></a>
-                    </div>
+            <div class="row-in">
+                <div class="row-left">
+                    <h3>Above the Clouds</h3>
+                </div>
+                <div class="row-right">
+                    <a href="Everest/index.html"><i class="bi bi-link"></i></a>
                 </div>
             </div>
-            <div class="row">
-                <div class="row-img">
-                    <a href="Digimon/index.html">
+        </div>
+        <div class="row">
+            <div class="row-img">
+                <a href="Digimon/index.html">
                     <img src="pic/digimon.png" alt="">
                 </a>
-                </div>
+            </div>
 
-                <div class="row-in">
-                    <div class="row-left">
-                        <h3>Digimon</h3>
-                    </div>
-                    <div class="row-right">
-                        <a href="Digimon/index.html"><i class="bi bi-link"></i></a>
-                    </div>
+            <div class="row-in">
+                <div class="row-left">
+                    <h3>Digimon</h3>
+                </div>
+                <div class="row-right">
+                    <a href="Digimon/index.html"><i class="bi bi-link"></i></a>
                 </div>
             </div>
-            <div class="row">
-                <div class="row-img">
-                    <a href="U4/embed.html">
+        </div>
+        <div class="row">
+            <div class="row-img">
+                <a href="U4/embed.html">
                     <img src="U4/pic/embed.png" alt="">
                 </a>
-                </div>
+            </div>
 
-                <div class="row-in">
-                    <div class="row-left">
-                        <h3>Gaming Phone Review</h3>
-                    </div>
-                    <div class="row-right">
-                        <a href="U4/embed.html"><i class="bi bi-link"></i></a>
-                    </div>
+            <div class="row-in">
+                <div class="row-left">
+                    <h3>Gaming Phone Review</h3>
+                </div>
+                <div class="row-right">
+                    <a href="U4/embed.html"><i class="bi bi-link"></i></a>
                 </div>
             </div>
-            <div class="row">
-                <div class="row-img">
-                    <a href="404.html">
+        </div>
+        <div class="row">
+            <div class="row-img">
+                <a href="404.html">
                     <img src="pic/error.png" alt="">
                 </a>
-                </div>
+            </div>
 
-                <div class="row-in">
-                    <div class="row-left">
-                        <h3>404 - Website Error</h3>
-                    </div>
-                    <div class="row-right">
-                        <a href="404.html"><i class="bi bi-link"></i></a>
-                    </div>
+            <div class="row-in">
+                <div class="row-left">
+                    <h3>404 - Website Error</h3>
+                </div>
+                <div class="row-right">
+                    <a href="404.html"><i class="bi bi-link"></i></a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="contact-main">
-                <div class="contact-info">
-                    <h2>Got a suggestion? <br> <span>Type Here</span></h2>
+<section class="contact" id="contact">
+    <div class="container">
+        <div class="contact-main">
+            <div class="contact-info">
+                <h2>Got a suggestion? <br> <span>Type Here</span></h2>
 
-                    <div class="email">
-                        <p>Email:</p>
-                        <h6>AustriaJm10@gmail.com</h6>
-                    </div>
-
-                    <div class="num">
-                        <p>Call:</p>
-                        <h6>09667748998</h6>
-                    </div>
-
-                    <div class="social-icons">
-                        <a href="https://www.facebook.com/profile.php?id=100008441056099"><i
-                                class="bi bi-facebook"></i></a>
-                        <a href="https://www.instagram.com/jeyem.1000/"><i class="bi bi-instagram"></i></a>
-                        <a href="https://x.com/jeyemaustria?t=8kOR_Y7VoCCbAh9TQtx9kQ&s=09"><i
-                                class="bi bi-twitter-x"></i></a>
-                        <a href="https://github.com/jmAustria0"><i class="bi bi-github"></i></a>
-                    </div>
+                <div class="email">
+                    <p>Email:</p>
+                    <h6>AustriaJm10@gmail.com</h6>
                 </div>
 
-                <form class="contact-form">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Email address..." required>
-                    <textarea cols="30" rows="10" placeholder="Write Message here..." required></textarea>
-                    <input type="submit" value="Submit Now" class="submit-btn">
-                </form>
-            </div>
-        </div>
-    </section>
+                <div class="num">
+                    <p>Call:</p>
+                    <h6>09667748998</h6>
+                </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-oBqDVmMz4fnFO9gybH8sE5J9W6L5he2gk9eRp1/3Q56V7gJYUbSfl8m1rDIQQVRj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-        integrity="sha384-LInl1qPlD60hRfO3AGIp8x2W9OK6q8qDPSFO0TQ0h5s9fjV0l39uoGBS4kb1PAH"
-        crossorigin="anonymous"></script>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=100008441056099"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.instagram.com/jeyem.1000/"><i class="bi bi-instagram"></i></a>
+                    <a href="https://x.com/jeyemaustria?t=8kOR_Y7VoCCbAh9TQtx9kQ&s=09"><i
+                            class="bi bi-twitter-x"></i></a>
+                    <a href="https://github.com/jmAustria0"><i class="bi bi-github"></i></a>
+                </div>
+            </div>
+
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Email address..." required>
+                <textarea cols="30" rows="10" placeholder="Write Message here..." required></textarea>
+                <input type="submit" value="Submit Now" class="submit-btn">
+            </form>
+        </div>
+    </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz4fnFO9gybH8sE5J9W6L5he2gk9eRp1/3Q56V7gJYUbSfl8m1rDIQQVRj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-LInl1qPlD60hRfO3AGIp8x2W9OK6q8qDPSFO0TQ0h5s9fjV0l39uoGBS4kb1PAH" crossorigin="anonymous"></script>
 </body>
 </body>
+<script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        menuToggle.classList.toggle('open');
+    });
+</script>
 <script>
     const header = document.querySelector("header");
 
